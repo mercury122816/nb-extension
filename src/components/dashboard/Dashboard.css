@@ -1,0 +1,82 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    margin: 4px;
+}
+
+.dashboard .tools {
+    display: flex;;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.dashboard .tools img {
+    cursor: pointer;
+}
+
+.dashboard .tools img:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.note-list {
+    margin-bottom: 20px;
+}
+
+.note-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid #807777;
+    cursor: pointer;
+    
+}
+
+.note-container:hover {
+    opacity: 0.6;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.note {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 4px;
+}
+
+.ic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px 20px;
+}
+
+.title {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.msg {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #807777;
+}
+
+.delete {
+    z-index: 10;
+    margin-right: 10px;
+}
+.edit {
+    margin: 0px 10px;
+}

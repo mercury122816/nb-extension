@@ -1,0 +1,10 @@
+.base {
+    text-align: start;
+    margin: 0px 2px;
+}
+.base ul {
+    margin-bottom: 4px;
+}
+.base .react-tabs {
+    background-color: #f9f9f9;
+}

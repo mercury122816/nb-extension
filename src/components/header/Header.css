@@ -1,0 +1,14 @@
+.header {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+}
+.titlebar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 6px 0px;
+}
