@@ -1,3 +1,28 @@
 .nb-editor {
     min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.nb-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nb-header .nb {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nb-header label {
+    font-size: 1.0rem;
+    font-weight: 600;
+    padding: 4px;
+}
+
+.nb-header img {
+    cursor: pointer;
+    padding: 4px;
 }

@@ -23,7 +23,7 @@ $(document).ready(() => {
     $(document.activeElement).append(
         '<div id="nb-add" class="add"'+
         ' style="position:fixed;top:40px;right:40px;width:48px;height:48px;'+
-        'z-index:30001;cursor:pointer;"><img id="nb-add-img" width="48" height="48"'+
+        'z-index:30001;cursor:pointer;"><img id="nb-add-img" title="Add Note" width="48" height="48"'+
         ' src="'+imgURL+'"'+
         ' /></div>'
     );

@@ -2,12 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import JoditEditor from "jodit-react";
 import ls from 'local-storage';
 import { uuid } from 'uuidv4';
+import download from './download.png';
+import './NBEditor.css';
 
 export default () => {
 
     const editor = useRef(null);
     const activeNb = useRef(null);
-    const activeContent = useRef(null);
+    const activeContent = useRef('');
 
     const [content, setContent] = useState('');
 
@@ -22,7 +24,7 @@ export default () => {
     }, []);
 
     useEffect(() => {
-        if (!activeContent.current) {
+        if (!activeContent.current || activeContent.current.length === 0) {
             activeContent.current = currentSelection || '';
         }
         else {
@@ -64,15 +66,57 @@ export default () => {
         readonly: false
     }
 
+    const NBHeader = () => {
+        let title = 'New Note';
+        const notes = ls.get('note_list');
+        let noteList = notes?JSON.parse(notes):[];
+        const filteredNote = noteList.filter(item => item.id === activeNb.current);
+        if(filteredNote && filteredNote.length > 0) {
+            title = filteredNote[0].title;
+        }
+        const onClick = () => {
+            const preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+            const postHtml = "</body></html>";
+            const content = ls.get(activeNb.current) || '';
+            const html = preHtml+content+postHtml;
+            const blob = new Blob(['\ufeff', html], {
+                type: 'application/msword'
+            });
+            const element = document.createElement("a");
+            element.href = URL.createObjectURL(blob);
+            element.download = `${title}.doc`;
+            document.body.appendChild(element);
+            element.click();
+        }
+        return (
+            <div className='nb-header'>
+                <div className='nb'>
+                    <label>{title}</label>
+                    <img width={20} height={20} title="Download" 
+                        onClick={onClick}
+                        src={download} />
+                </div>
+            </div>
+        );
+    }
+
+    const getWidth = () => {
+        if(window.screen.width < 1024) {
+            return window.screen.width * 0.8;
+        }
+        return window.screen.width * 0.4;
+    }
+
     return (
-        <div className='nb-editor' style={{ width: window.screen.width * 0.4 }}>
+        <div className='nb-editor' style={{ width: getWidth() }}>
+            <NBHeader />
             <JoditEditor
                 ref={editor}
                 value={content}
                 config={config}
                 tabIndex={1}
-                onBlur={newContent => setContent(newContent)}
-                onChange={onChange}
+                onBlur={onChange}
+                onChange={(newContent => {})}
             />
         </div>
     );

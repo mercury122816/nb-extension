@@ -126,9 +126,11 @@ export default (props) => {
                 </div>
                 <div>
                     <img src={editIcon} width={24} height={24}
+                        title='Edit Note'
                         className='edit' 
                         onClick={onRowClick} alt="" />
                     <img src={deleteIcon} width={24} height={24}
+                        title='Delete Note'
                         className='delete' 
                         onClick={deleteNote} alt="" />
                 </div>
@@ -136,15 +138,31 @@ export default (props) => {
         );
     }
 
+    const getWidth = () => {
+        if(window.screen.width < 1024) {
+            return window.screen.width * 0.8;
+        }
+        return window.screen.width * 0.4;
+    }
+
+    const getHeight = () => {
+        if(window.screen.width < 1024) {
+            return window.screen.height * 0.8;
+        }
+        return window.screen.height * 0.5;
+    }
+
     return (
         <div className='dashboard'>
             <div className='tools'>
-                <img src={add} width={48} height={24} onClick={addNote} alt="" />
+                <img src={add} width={48} height={24} 
+                    title='Add New Note'
+                    onClick={addNote} alt="" />
             </div>
             <div className='note-list'>
                 <List
-                    width={window.screen.width * 0.4}
-                    height={window.screen.height * 0.5}
+                    width={getWidth()}
+                    height={getHeight()}
                     rowCount={list.length}
                     rowHeight={60}
                     rowRenderer={rowRenderer}
