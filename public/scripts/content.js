@@ -23,7 +23,8 @@ $(document).ready(() => {
     $(document.activeElement).append(
         '<div id="nb-add" class="add"'+
         ' style="position:fixed;top:40px;right:40px;width:48px;height:48px;'+
-        'z-index:30001;cursor:pointer;"><img id="nb-add-img" title="Add Note" width="48" height="48"'+
+        'visibility:hidden;z-index:30001;cursor:pointer;transition: visibility 2s ease-in-out">'+
+        '<img id="nb-add-img" title="Add Note" width="48" height="48"'+
         ' src="'+imgURL+'"'+
         ' /></div>'
     );
@@ -38,7 +39,21 @@ $(document).ready(() => {
     });
 });
 
+const setBtnVisible = (visible) => {
+    if(visible) {
+        $('#nb-add').css('visibility', 'visible');
+    }
+    else {
+        $('#nb-add').css('visibility', 'hidden');
+    }
+}
 
 document.onmouseup = document.onkeyup = document.onselectionchange =  () => {
     window.selectedText = getSelectionText();
+    if(window.selectedText && window.selectedText.trim().length > 0) {
+        setBtnVisible(true);
+    }
+    else {
+        setBtnVisible(false);
+    }
 };
