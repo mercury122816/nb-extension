@@ -88,10 +88,11 @@ $(document.activeElement).on('mouseup', function (e) {
             pressed = true;
             $('#nb-tool').remove();
             $(document.activeElement).append(
-                '<div id="nb-tool" style="position:fixed;font-size:1.2rem;' +
+                '<div id="nb-tool" style="position:fixed;font-size:1.0rem;' +
                 'font-family:Arial, Helvetica, sans-serif' +
-                'padding:8px;background:#d5dbe3;' +
-                'top: 160px;right:40px;">' +
+                'padding:6px;z-index:30001;background:#d5dbe3;' +
+                'top: 160px;right:40px;display:flex;align-items:center;'+ 
+                'justify-content:center;text-align:center;min-width:100px;min-heigth:48px">' +
                 'Copied!</div>'
             );
             const imgSource = e.target.src;

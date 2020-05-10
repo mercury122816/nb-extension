@@ -30,6 +30,6 @@
     "images/add.png",
     "styles/style.css"
   ],
-  "permissions": [],
+  "permissions": ["activeTab"],
   "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com; object-src 'self'"
 }
